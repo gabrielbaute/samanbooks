@@ -1,0 +1,1 @@
+from app.frontend.routes.register_routes import register_routes
