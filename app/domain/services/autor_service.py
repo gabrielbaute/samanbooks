@@ -120,7 +120,22 @@ class AutorService:
             return True
         except Exception as e:
             return False
-    
+
+    def buscar_o_crear_por_nombre(self, nombre: str) -> Autor:
+        """
+        Busca un autor por su nombre o lo crea si no existe.
+
+        Args:
+            nombre (str): El nombre del autor.
+
+        Returns:
+            Autor: El autor encontrado o creado.
+        """
+        try:
+            return self.buscar_por_nombre(nombre)[0]
+        except AutorNoEncontrado:
+            return self.registrar_autor(nombre)
+
     def eliminar(self, autor_id: UUID) -> None:
         """
         Elimina un autor por su ID.

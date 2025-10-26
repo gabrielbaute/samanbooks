@@ -77,6 +77,24 @@ class SerieService:
         if not series:
             raise SerieNoEncontrada()
         return series
+
+    def buscar_por_nombre(self, nombre: str) -> List[Serie]:
+        """
+        Busca series por nombre.
+
+        Args:
+            nombre (str): El nombre de la serie.
+
+        Returns:
+            List[Serie]: La lista de series encontradas.
+
+        Raises:
+            SerieNoEncontrada: Si no se encuentran series con el nombre dado.
+        """
+        series = self.repo.buscar_por_nombre(nombre)
+        if not series:
+            raise SerieNoEncontrada()
+        return series
     
     def agregar_libro_a_serie(self, serie_id: UUID, libro_id: UUID) -> Optional[bool]:
         """
@@ -121,7 +139,22 @@ class SerieService:
             return True
         except Exception as e:
             return False
-    
+
+    def buscar_o_crear_por_nombre(self, nombre: str) -> Serie:
+        """
+        Busca una serie por su nombre o la crea si no existe.
+
+        Args:
+            nombre (str): El nombre de la serie.
+
+        Returns:
+            Serie: La serie encontrada o creada.
+        """
+        try:
+            return self.buscar_por_nombre(nombre)[0]
+        except SerieNoEncontrada:
+            return self.registrar_serie(nombre)
+
     def eliminar_serie(self, serie_id: UUID) -> None:
         """
         Elimina una serie por su ID.
