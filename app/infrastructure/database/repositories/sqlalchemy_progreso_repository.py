@@ -93,3 +93,20 @@ class SQLAlchemyProgresoRepository(ProgresoRepository):
         """
         modelo = self.session.get(ProgresoModel, id)
         return Progreso(**modelo.__dict__) if modelo else None
+
+    def obtener_por_usuario(self, usuario_id: UUID) -> List[Progreso]:
+        """
+        Obtiene progreso por usuario.
+
+        Args:
+            usuario_id (UUID): El ID del usuario.
+
+        Returns:
+            List[Progreso]: Una lista de progreso del usuario.
+        """
+        resultados = (
+            self.session.query(ProgresoModel)
+            .filter_by(usuario_id=usuario_id)
+            .all()
+        )
+        return [Progreso(**r.__dict__) for r in resultados]
