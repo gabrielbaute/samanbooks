@@ -16,3 +16,10 @@ class SerieSchemaResponse(BaseModel):
     libros: List[UUID]
     descripcion: Optional[str] = None
     portada_hash: Optional[str] = None
+
+class SerieSchemaUpdate(BaseModel):
+    nombre: Optional[str] = None
+    autor_ids: Optional[List[UUID]] = None
+    libros: Optional[List[UUID]] = None
+    descripcion: Optional[str] = None
+    portada_hash: Optional[str] = None
