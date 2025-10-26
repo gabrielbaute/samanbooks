@@ -1,0 +1,13 @@
+# caché
+__pycache__/
+*.pyc
+
+# venv
+.venv/
+venv/
+
+# env
+*.env
+
+# Storage
+Libros/
