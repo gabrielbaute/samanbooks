@@ -3,7 +3,6 @@ from typing import Optional
 from uuid import UUID, uuid4
 from datetime import datetime
 
-
 class Marcador(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     usuario_id: UUID

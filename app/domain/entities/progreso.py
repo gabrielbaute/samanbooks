@@ -1,9 +1,10 @@
 from pydantic import BaseModel, Field, field_validator
-from uuid import UUID
+from uuid import UUID, uuid4
 from datetime import datetime
 from app.domain.enums import Estatus
 
 class Progreso(BaseModel):
+    id: UUID = Field(default_factory=uuid4)
     usuario_id: UUID
     libro_id: UUID
     porcentaje: float

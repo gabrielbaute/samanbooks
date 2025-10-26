@@ -80,3 +80,14 @@ class ProgresoService:
         """
         return self.repo.obtener_por_usuario_y_libro(usuario_id, libro_id)
 
+    def obtener_progreso_por_id(self, progreso_id: UUID) -> Optional[Progreso]:
+        """
+        Obtiene el progreso de lectura por su ID.
+
+        Args:
+            progreso_id (UUID): El ID del progreso.
+
+        Returns:
+            Optional[Progreso]: EL progreso de lectura, None si no se encuentra.
+        """
+        return self.repo.obtener_por_id(progreso_id)
