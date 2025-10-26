@@ -71,6 +71,12 @@ class AutorServiceImpl(AutorService):
             return True
         except Exception as e:
             return False
-    
+
+    def buscar_o_crear_por_nombre(self, nombre) -> Autor:
+        try:
+            return self.buscar_por_nombre(nombre)[0]
+        except AutorNoEncontrado:
+            return self.registrar_autor(nombre)
+
     def eliminar(self, autor_id: UUID) -> None:
         self.repo.eliminar(autor_id)

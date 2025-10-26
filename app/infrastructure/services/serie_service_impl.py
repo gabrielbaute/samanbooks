@@ -46,6 +46,18 @@ class SerieServiceImpl(SerieService):
         if not series:
             raise SerieNoEncontrada()
         return series
+
+    def buscar_por_nombre(self, nombre: str) -> List[Serie]:
+        series = self.repo.buscar_por_nombre(nombre)
+        if not series:
+            raise SerieNoEncontrada()
+        return series
+
+    def buscar_o_crear_por_nombre(self, nombre: str) -> Serie:
+        try:
+            return self.buscar_por_nombre(nombre)[0]
+        except SerieNoEncontrada:
+            return self.registrar_serie(nombre)
     
     def agregar_libro_a_serie(self, serie_id, libro_id) -> Optional[bool]:
         try:
