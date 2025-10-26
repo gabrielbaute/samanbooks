@@ -21,3 +21,6 @@ class ProgresoRepository(ABC):
 
     @abstractmethod
     def obtener_por_id(self, id: UUID) -> Optional[Progreso]: pass
+
+    @abstractmethod
+    def obtener_por_usuario(self, usuario_id: UUID) -> List[Progreso]: pass
