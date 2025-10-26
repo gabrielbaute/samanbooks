@@ -14,6 +14,9 @@ class SerieRepository(ABC):
     def buscar_por_nombre(self, nombre: str) -> List[Serie]: pass
 
     @abstractmethod
+    def buscar_por_autor(self, autor_id: UUID) -> List[Serie]: pass
+
+    @abstractmethod
     def eliminar(self, id: UUID) -> None: pass
 
     @abstractmethod

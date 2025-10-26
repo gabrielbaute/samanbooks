@@ -57,6 +57,23 @@ class SQLAlchemySerieRepository(SerieRepository):
             .all()
         )
         return [Serie(**r.__dict__) for r in resultados]
+    
+    def buscar_por_autor(self, autor_id: UUID) -> List[Serie]:
+        """
+        Busca series por autor.
+
+        Args:
+            autor_id (UUID): El ID del autor.
+
+        Returns:
+            List[Serie]: Una lista de series que corresponden al autor.
+        """
+        resultados = (
+            self.session.query(SerieModel)
+            .filter_by(autor_id=autor_id)
+            .all()
+        )
+        return [Serie(**r.__dict__) for r in resultados]
 
     def eliminar(self, id: UUID) -> None:
         """
