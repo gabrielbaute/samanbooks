@@ -105,3 +105,12 @@ class MarcadorService:
             marcador_id (UUID): El ID del marcador.
         """
         self.repo.eliminar(marcador_id)
+
+    def listar_todos(self) -> List[Marcador]:
+        """
+        Obtiene todos los marcadores.
+
+        Returns:
+            List[Marcador]: Una lista de marcadores.
+        """
+        return self.repo.listar_todos()

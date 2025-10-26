@@ -7,7 +7,7 @@ from domain.enums import Estatus
 from domain.repositories import ProgresoRepository
 from domain.exceptions import ProgresoInvalido
 
-class LecturaService:
+class ProgresoService:
     def __init__(self, progreso_repo: ProgresoRepository):
         self.repo = progreso_repo
 
